@@ -8,7 +8,7 @@ class TileBoard extends Component {
 
         for (let i = 0; i < this.props.rows; i++) {
             const thisRow = this.props.tiles[i]
-            rows[i] = (<TileRow tiles={thisRow} key={i}/>)
+            rows[i] = (<TileRow key={i} tiles={thisRow} rowNum={i} move={this.props.move}/>)
         }
         
         return (

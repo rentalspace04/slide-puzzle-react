@@ -13,6 +13,9 @@ class App extends Component {
             tiles: this.remakeTiles(3, 3)
         }
         this.changeDimensions = this.changeDimensions.bind(this)
+        this.movesInto = this.movesInto.bind(this)
+        this.moveTile = this.moveTile.bind(this)
+        this.outsideBoard = this.outsideBoard.bind(this)
     }
 
     changeDimensions(newDim, isN) {
@@ -93,7 +96,11 @@ class App extends Component {
                     <h1 className="App-title">Slide Puzzle</h1>
                 </header>
                 <Dimensions handleChange={this.changeDimensions} />
-                <TileBoard cols={this.state.m} rows={this.state.n} tiles={this.state.tiles} />
+                <TileBoard 
+                    cols={this.state.m} 
+                    rows={this.state.n} 
+                    tiles={this.state.tiles} 
+                    move={this.moveTile} />
                 <button type="button" onClick={(e) => this.shuffleTiles()}>Shuffle</button>
             </div>
         );
