@@ -7,7 +7,7 @@ import _ from "lodash"
 
 const randomMove = () => {
     // 0 and 1 must be slightly more likely than other moves
-    if (Math.random() < 0.6) {
+    if (Math.random() < 0.55) {
         return Math.floor(2 * Math.random()) // Return 0 or 1
     }
     return Math.floor(2 * Math.random()) + 2
@@ -60,16 +60,16 @@ class App extends Component {
 
     shuffleTiles() {
         let i = 0;
-        const shuffles = 10 * this.state.m * this.state.n;
+        const shuffles = 20 * this.state.m * this.state.n;
         let last_move = null;
         const sleepMove = () => {
             last_move = this.makeRandomMove(last_move)
             if (i < shuffles) {
                 i++;
-                setTimeout(sleepMove, 50)
+                setTimeout(sleepMove, 25)
             }
         }
-        setTimeout(sleepMove, 10)
+        setTimeout(sleepMove, 5)
         
     }
 
@@ -151,13 +151,13 @@ class App extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Slide Puzzle</h1>
                 </header>
-                <StatusBar tiles={this.state.tiles} changed={this.state.boardChanged} />
                 <Dimensions handleChange={this.changeDimensions} />
                 <TileBoard 
                     cols={this.state.m} 
                     rows={this.state.n} 
                     tiles={this.state.tiles} 
                     move={this.moveTile} />
+                <StatusBar tiles={this.state.tiles} changed={this.state.boardChanged} />
                 <button type="button" onClick={(e) => this.shuffleTiles()}>Shuffle</button>
             </div>
         );

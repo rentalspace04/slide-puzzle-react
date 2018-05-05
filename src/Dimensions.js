@@ -13,10 +13,12 @@ class Dimensions extends Component {
     render() {
         return (
             <div className="Dimensions">
-                {/* M dimension */}
-                <input type="text" onChange={(e) => this.changeDimensions(e, false)} />
-                {/* N dimension */}
-                <input type="text" onChange={(e) => this.changeDimensions(e, true)} />
+                <p> Dimensions: 
+                    {/* M dimension */}
+                    <input type="text" onChange={(e) => this.changeDimensions(e, false)} />
+                    {/* N dimension */}
+                    <input type="text" onChange={(e) => this.changeDimensions(e, true)} />
+                </p>
             </div>
         );
     }

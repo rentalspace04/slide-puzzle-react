@@ -1,9 +1,9 @@
 .Tile {
     margin-left: 5px;
     background-color: #eee;
-    font-size: 40pt;
+    font-size: 30pt;
     cursor: pointer;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     display: inline-block;
 }
