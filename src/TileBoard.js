@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import TileRow from "./TileRow"
+import "./TileBoard.css"
 
 class TileBoard extends Component {
     render() {
-        const rows = [];
+        const rows = Array(this.props.rows);
+
+        for (let i = 0; i < this.props.rows; i++) {
+            const thisRow = this.props.tiles[i]
+            rows[i] = (<TileRow tiles={thisRow} key={i}/>)
+        }
         
         return (
-            <p>Tiles</p>
+            <div className="TileBoard">
+                {rows}
+            </div>
         );
     }
 }

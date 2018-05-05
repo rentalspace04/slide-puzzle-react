@@ -1,0 +1,17 @@
+.Tile {
+    margin-left: 5px;
+    background-color: #eee;
+    font-size: 40pt;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+
+.TileRow {
+    width: 50%;
+    margin-left: 25%;
+    min-width: 400px;
+    text-align: center;
+    margin-bottom: 5px;
+}
