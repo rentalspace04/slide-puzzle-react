@@ -4,8 +4,12 @@ import TileBoard from "./TileBoard"
 import Dimensions from './Dimensions'
 import _ from "lodash"
 
-const randomInt = (min, max) => {
-    return Math.floor((max - min) * Math.random()) + min
+const randomMove = () => {
+    // 0 and 1 must be slightly more likely than other moves
+    if (Math.random() < 0.65) {
+        return Math.floor(2 * Math.random()) // Return 0 or 1
+    }
+    return Math.floor(2 * Math.random()) + 2
 }
 
 class App extends Component {
@@ -68,12 +72,12 @@ class App extends Component {
     makeRandomMove(last_move) {
         // Possible moves that could be made
         console.log("Making ranom move")
-        const moves = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+        const moves = [[-1, 0], [0, -1], [1, 0], [0, 1]];
         console.log(this.state.tiles)
         const zero_j = _.findIndex(this.state.tiles, row => _.includes(row, 0))
         const zero_i = _.findIndex(this.state.tiles[zero_j], elem => elem === 0)
         // Find a valid move (starting from random)
-        let i = randomInt(0, 4);
+        let i = randomMove();
         let checked = 0;
         while (checked < 4) { // Should never have to rely on this, but JIC
             const move = moves[i];
