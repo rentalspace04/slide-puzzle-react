@@ -53,8 +53,9 @@ class App extends Component {
     shuffleTiles() {
         let i = 0;
         const shuffles = 10 * this.state.m * this.state.n;
+        let last_move = null;
         const sleepMove = () => {
-            this.makeRandomMove()
+            last_move = this.makeRandomMove(last_move)
             if (i < shuffles) {
                 i++;
                 setTimeout(sleepMove, 50)
@@ -64,7 +65,7 @@ class App extends Component {
         
     }
 
-    makeRandomMove() {
+    makeRandomMove(last_move) {
         // Possible moves that could be made
         console.log("Making ranom move")
         const moves = [[1, 0], [-1, 0], [0, 1], [0, -1]];
@@ -79,11 +80,15 @@ class App extends Component {
             const move_i = zero_i + move[0];
             const move_j = zero_j + move[1];
             console.log(`moving ${move_i}, ${move_j}`)
+            
             // If this is a valid move, do it
             if (!this.outsideBoard(move_i, move_j)) {
-                console.log("inside board")
-                this.moveTile(move_i, move_j)
-                return;
+                // Check that this isn't just reversing the last move
+                if (last_move == null || (last_move[0] !== move_i && last_move[1] !== move_j)) {
+                    console.log("inside board")
+                    this.moveTile(move_i, move_j)
+                    return [zero_i, zero_j];
+                }
             }
             // Otherwise, check next move in order
             i = (i + 1) % 4;
