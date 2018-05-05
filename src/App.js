@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import './App.css'
+import './styles/App.css'
 import TileBoard from "./TileBoard"
 import Dimensions from './Dimensions'
+import StatusBar from "./StatusBar"
 import _ from "lodash"
 
 const randomMove = () => {
     // 0 and 1 must be slightly more likely than other moves
-    if (Math.random() < 0.65) {
+    if (Math.random() < 0.6) {
         return Math.floor(2 * Math.random()) // Return 0 or 1
     }
     return Math.floor(2 * Math.random()) + 2
@@ -18,6 +19,7 @@ class App extends Component {
         this.state = {
             m: 3,
             n: 3,
+            boardChanged: false,
             tiles: this.remakeTiles(3, 3)
         }
         this.changeDimensions = this.changeDimensions.bind(this)
@@ -29,7 +31,9 @@ class App extends Component {
     }
 
     changeDimensions(newDim, isN) {
-        const newState = {}
+        const newState = {
+            boardChanged: false
+        }
         let cols = this.state.m
         let rows = this.state.n
         if (isN) {
@@ -110,7 +114,7 @@ class App extends Component {
             const thisTile = tiles[j][i]
             tiles[j][i] = 0;
             tiles[new_j][new_i] = thisTile
-            this.setState({tiles})
+            this.setState({tiles, boardChanged: true})
         }
     }
 
@@ -147,6 +151,7 @@ class App extends Component {
                 <header className="App-header">
                     <h1 className="App-title">Slide Puzzle</h1>
                 </header>
+                <StatusBar tiles={this.state.tiles} changed={this.state.boardChanged} />
                 <Dimensions handleChange={this.changeDimensions} />
                 <TileBoard 
                     cols={this.state.m} 

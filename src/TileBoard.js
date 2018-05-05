@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TileRow from "./TileRow"
-import "./TileBoard.css"
+import "./styles/TileBoard.css"
 
 class TileBoard extends Component {
     render() {

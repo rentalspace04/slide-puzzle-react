@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import "./Tile.css"
+import "./styles/Tile.css"
 
-class TileRow extends Component {
+class Tile extends Component {
     render() {
         const i = this.props.colNum
         const j = this.props.rowNum
@@ -17,4 +17,4 @@ class TileRow extends Component {
     }
 }
 
-export default TileRow;
+export default Tile;

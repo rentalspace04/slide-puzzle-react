@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from "lodash"
-import "./TileRow.css"
+import "./styles/TileRow.css"
 import Tile from "./Tile"
 
 class TileRow extends Component {

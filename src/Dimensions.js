@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Dimensions.css"
+import "./styles/Dimensions.css"
 
 class Dimensions extends Component {
 
